@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+	  <% include ../../partials/head %>
+	</head>
+	<body class="container">
+
+		<header>
+			<% include ../../partials/headerchauffeur %>
+		</header>
+
+		<main >
+			<div class="jumbotron">
+				<div class="container">
+					<div class="row">
+        				<div class="col-lg-2">
+        				</div>
+        				<div class="col-lg-8">
+        					<% if ( mess.length>0) { %>
+      							<div class="alert alert-info">
+									<strong>Info!</strong> <%= mess %>
+								</div>
+							<% } %>
+        				</div>
+      				</div>
+      				
+      				<div  class="row">
+      					<div class="col-lg-2">
+        				</div>
+      					<div class="col-lg-8">
+      						
+							<%if (courseAPC != null) { %>
+								<form class="form-group" method="post" action="/prendreCharge">
+									<input type="radio" name="course" value="<%=courseAPC.CourseID%>" required /> <b>Départ:</b> <%=courseAPC.lieu_depart%>  <b>Arrivée:</b> <%= courseAPC.lieu_darrivee%>  <br>
+									<button class="btn btn-login float-right" type="submit">Prendre en charge</button>
+								</form>
+							<% } %>
+							<%if (coursePC != null) { %>
+								<form  class="form-group" method="post" action="/arriveePD">
+									<input type="radio" name="course" value="<%=coursePC.CourseID%>" required /> <b>Départ:</b> <%=coursePC.lieu_depart%>  <b>Arrivée:</b> <%= coursePC.lieu_darrivee%>  <br>
+									<button class="btn btn-login float-right" type="submit">Prevenir le client</button>
+								</form>
+							<% } %>
+							<%if (courseAPD != null) { %>
+								<form  class="form-group" method="post" action="/demarrer">
+									<input type="radio" name="course" value="<%=courseAPD.CourseID%>" required /> <b>Départ:</b> <%=courseAPD.lieu_depart%>  <b>Arrivée:</b> <%= courseAPD.lieu_darrivee%>  <br>
+									<button class="btn btn-login float-right" type="submit">Démarrer</button>
+								</form>
+							<% } %>
+							<%if (courseEN != null) { %>
+								<form class="form-group" method="post" action="/terminer">
+									<input type="radio" name="course" value="<%=courseEN.CourseID%>" required /> <b>Départ:</b> <%=courseEN.lieu_depart%>  <b>Arrivée:</b> <%= courseEN.lieu_darrivee%>  <br>
+									<button class="btn btn-login float-right" type="submit">Terminer</button>
+								</form>
+							<% } %>
+
+      					</div>
+				</div>
+			</div>
+		</main>
+
+		<footer>
+			<% include ../../partials/footer %>
+		</footer>
+
+	</body>
+</html>

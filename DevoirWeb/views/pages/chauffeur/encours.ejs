@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+	  <% include ../../partials/head %>
+	</head>
+	<body class="container">
+
+		<header>
+			<% include ../../partials/headerchauffeur %>
+		</header>
+
+		<main>
+			<div class="jumbotron">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-2">
+							
+						</div>
+						<div class="col-lg-8">
+							<% if ( mess.length>0) { %>
+      							<div class="alert alert-info">
+									<strong>Info!</strong> <%= mess %> 
+								</div>
+							<% } %>
+						</div>
+					</div>
+      				<div  class="row">
+      					<div class="col-lg-2">
+      						
+      					</div>
+      					<div class="col-lg-8">
+							<%if (course != null) { %>
+								<form class="form-group" method="post" action="/terminer">
+									<input type="radio" name="course" value="<%=course.CourseID%>"  required /> <b>Départ:</b> <%=course.lieu_depart%>  <b>Arrivée:</b> <%= course.lieu_darrivee%>  <br>
+									<button class="btn btn-login float-right" type="submit">Terminer</button>
+								</form>
+							<% } %>
+      					</div>
+				</div>
+			</div>
+		</main>
+
+		<footer>
+			<% include ../../partials/footer %>
+		</footer>
+
+	</body>
+</html>

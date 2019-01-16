@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+	  <% include ../../partials/head %>
+	</head>
+	<body class="container">
+
+		<header>
+			<% include ../../partials/headerchauffeur %>
+		</header>
+
+		<main>
+			<div class="jumbotron">
+				<div class="container">
+					<div class="row">
+        				<div class="col-lg-2">
+        				</div>
+        				<div class="col-lg-8">
+        					<% if ( mess.length>0) { %>
+      							<div class="alert alert-info">
+									<strong>Info!</strong> <%= mess %>
+								</div>
+							<% } %>
+        				</div>
+      				</div>
+      				<div  class="row">
+      					<div class="col-lg-2">
+      						
+      					</div>
+      					<div class="col-lg-8">
+								
+								<%if (chauffeur.prenom != null) { %>
+									<div class="alert alert-warning">
+									 	<b>Prénom: </b> <%= chauffeur.prenom %>
+									</div>
+								<% } %>
+								<%if (chauffeur.nom != null) { %>
+									<div class="alert alert-warning">
+										<b>Nom: </b> <%= chauffeur.nom %>
+									</div>
+								<% } %>
+								<%if (chauffeur.email != null) { %>
+									<div class="alert alert-warning">
+									 	<b>Email: </b> <%= chauffeur.email %>
+									</div>
+								<% } %>
+								<%if (chauffeur.numero != null) { %>
+									<div class="alert alert-warning">
+									 	<b>Numéro: </b> <%= chauffeur.numero %>
+									</div>
+								<% } %>
+							
+      					</div>
+				</div>
+			</div>
+		</main>
+
+		<footer>
+			<% include ../../partials/footer %>
+		</footer>
+
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+	  <% include ../../partials/head %>
+	</head>
+	<body class="container">
+
+		<header>
+			<% include ../../partials/headerclient %>
+		</header>
+
+		<main>
+			<div class="jumbotron">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-2">
+							
+						</div>
+						<div class="col-lg-8">
+							<% if ( mess.length>0) { %>
+      							<div class="alert alert-info">
+									<strong>Info!</strong> <%= mess %> 
+								</div>
+							<% } %>
+						</div>
+					</div>
+      				<div  class="row">
+      					<div class="col-lg-2">
+      						
+      					</div>
+      					
+      					<div class="col-lg-8">
+      						
+							<%if (course != null) { %>
+								<ul class="list-group">
+									<% for(var i=0; i<course.length ; i++){%>
+										<li class="list-group-item list-group-item-success"> <b>Départ:</b> <%=course[i].lieu_depart%>  <b>Arrivée:</b> <%= course[i].lieu_darrivee%></li>
+									<% } %>
+								</ul>
+							<% } %>
+      					</div>
+
+      					
+				</div>
+			</div>
+		</main>
+
+		<footer>
+			<% include ../../partials/footer %>
+		</footer>
+
+	</body>
+</html>

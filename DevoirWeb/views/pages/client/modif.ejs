@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+	  <% include ../../partials/head %>
+	</head>
+	<body class="container">
+
+		<header>
+			<% include ../../partials/headerclient %>
+		</header>
+
+		<main>
+			<div class="jumbotron">
+				<div class="container">
+					<div class="row">
+        				<div class="col-lg-2">
+        				</div>
+        				<div class="col-lg-6">
+        					<% if ( mess.length>0) { %>
+      							<div class="alert alert-info">
+									<strong>Info!</strong> <%= mess %>
+								</div>
+							<% } %>
+        				</div>
+      				</div>
+      				<div  class="row">
+      					<div class="col-lg-2">
+      						
+      					</div>
+      					<div class="col-lg-6 login-sec">
+      						<h2 class="text-center">Modification informations</h2>
+							<form class="login-form" method="post" action="/client/modifier">
+							    <div class="login-form">	
+							    	<label class="text-uppercase" for="prenom"><b>Prénom</b></label>
+							    	<input class="form-control" type="text" placeholder="Prénom" name="prenom">
+							    </div>
+							    <div class="login-form">
+							    	<label class="text-uppercase" for="nom"><b>Nom</b></label>
+							    	<input class="form-control" type="text" placeholder="Nom" name="nom">
+							    </div>
+							    <div class="login-form">
+							    	<label class="text-uppercase" for="email"><b>Email</b></label>
+							    	<input class="form-control" type="email" placeholder="Email" name="email">
+							    </div>
+							    <div class="login-form">
+							    	<label class="text-uppercase" for="numero"><b>Numéro</b></label>
+							    	<input class="form-control" type="tel" placeholder="Numero" name="numero">
+							    </div>
+							    <br>
+						      	<button class="btn btn-login float-right" type="submit" >Modifiez</button>
+							</form> 
+							
+      					</div>
+				</div>
+			</div>
+		</main>
+
+		<footer>
+			<% include ../../partials/footer %>
+		</footer>
+
+	</body>
+</html>

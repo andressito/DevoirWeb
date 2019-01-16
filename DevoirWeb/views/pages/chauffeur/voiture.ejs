@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+	  <% include ../../partials/head %>
+	</head>
+	<body class="container">
+
+		<header>
+			<% include ../../partials/headerchauffeur %>
+		</header>
+
+		<main>
+			<div class="jumbotron">
+				<div class="container">
+					<div class="row">
+        				<div class="col-lg-2">
+        				</div>
+        				<div class="col-lg-8">
+        					<% if ( mess.length>0) { %>
+      							<div class="alert alert-info">
+									<strong>Info!</strong> <%= mess %>
+								</div>
+							<% } %>
+        				</div>
+      				</div>
+      				<div  class="row">
+      					<div class="col-lg-2">
+      						
+      					</div>
+      					<div class="col-lg-8 login-sec">
+							<%if (voiture == null) { %>
+							<h2 class="text-center">Ajout d'une voiture</h2>
+								<form class="form-group" method="post" action="/ajoutervoiture">
+									<div class="form-group" >
+										<label class="text-uppercase" for="marque"><b>Marque</b></label>
+							    		<input class="form-control" type="text" placeholder="Marque" name="marque">
+									</div>
+									<div class="form-group" >
+										<label class="text-uppercase" for="modele"><b>Modèle</b></label>
+							    		<input class="form-control" type="text" placeholder="Modele" name="modele">
+									</div>
+									<div class="form-group" >
+										<label class="text-uppercase" for="couleur"><b>Couleur</b></label>
+							    		<input class="form-control" type="text" placeholder="Couleur" name="couleur">
+									</div>
+									<button class="btn btn-login float-right" type="submit">Ajouter</button>
+								</form>
+							<% } %>
+							<%if (voiture != null) { %>
+								<div class="alert alert-warning">
+									<b>Marque: </b> <%= voiture.marque %>
+								</div>
+								<div class="alert alert-warning">
+									<b>Modele: </b> <%= voiture.modele %>
+								</div>
+								<div class="alert alert-warning">
+									<b>Couleur: </b> <%= voiture.couleur %>
+								</div>
+							<% } %>
+      					</div>
+					</div>
+
+      				
+			</div>
+		</main>
+
+		<footer>
+			<% include ../../partials/footer %>
+		</footer>
+
+	</body>
+</html>

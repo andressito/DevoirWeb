@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+	  	<% include ../../partials/head %>
+	  	<script> 
+			function iPCheck(){
+				if (document.getElementById('plustard').checked) {
+			        document.getElementById('ifPT').style.display = 'block';
+			        document.getElementById('ifPT2').style.display = 'block';
+			        document.getElementById('ifIM').style.display = 'none';
+
+			    }else {
+			    	document.getElementById('ifPT').style.display = 'none';
+			    	document.getElementById('ifPT2').style.display = 'none';
+			    	document.getElementById('ifIM').style.display = 'block';
+			    }
+			    
+			}
+		</script>
+	</head>
+	<body class="container">
+
+		<header>
+			<% include ../../partials/headerclient %>
+		</header>
+
+		<main>
+			<div class="jumbotron">
+				<div class="container">
+      				<div class="row">
+        				<div class="col-lg-2">
+        				</div>
+        				<div class="col-lg-8">
+        					<% if ( mess.length>0) { %>
+      							<div class="alert alert-info">
+									<strong>Info!</strong> <%= mess %>
+								</div>
+							<% } %>
+        				</div>
+      				</div>
+      				<div class="row">
+        				<div class="col-lg-2">
+        				</div>
+        				<div class="col-lg-8">
+        					<%if (voitureRI == null) { %>
+      							<div class="alert alert-info">
+									<strong>Info!</strong> Tous nos chauffeurs sont occupés, veuillez attendre quelques minutes svp!! 
+								<br> Excusez nous pour la gêne occasionnée!!
+								</div>
+							<% } %>
+        				</div>
+      				</div>
+      				<div  class="row">
+      					<div class="col-lg-2">
+      						
+      					</div>
+      					<div class="col-lg-6 login-sec">
+      						
+      						<h2 class="text-center">Réservation</h2>
+								<form  class="login-form" method="post" action="/reservation">
+									<div class="login-form">
+					  					<label class="text-uppercase" for="depart"><b>Adresse de départ</b></label>
+					    				<input list="depart" class="form-control" type="text" placeholder="Entrez l'adresse de départ" name="depart" required>
+					    				<datalist id="depart"><%
+						                    for(var i=0; i<adresse.length ; i++){%>
+						                        <option value="<%=adresse[i]%>">
+						                    <%}%>
+						                </datalist>
+					    			</div>
+							    	<div class="login-form">
+					    				<label class="text-uppercase" for="arrivee"><b>Adresse de d'arrivée</b></label>
+					    				<input list="arrivee" class="form-control" type="text" placeholder="Entrez l'adresse d'arrivée" name="arrivee" required>
+					    				<datalist id="arrivee"><%
+						                    for(var i=0; i<adresse.length ; i++){%>
+						                        <option value="<%=adresse[i]%>">
+						                    <%}%>
+						                </datalist>
+					    			</div>
+					    			<%if (voitureRI != null) { %>
+							    	<div class="login-form" id="ifIM" style="display: block">
+
+						    			<label class="text-uppercase" for="type"> <b>Type de voiture</b></label>
+										<select class="form-control" name="type" id="type"><%
+		                    				for(var i=0; i<voitureRI.length ; i++){%>
+		                        				<option value="<%=voitureRI[i].VoitureID%>"> <%=voitureRI[i].marque%> <%=voitureRI[i].modele%> </option>
+		                   						 <%}%>
+										</select>
+					    			</div>
+					    			<% } %>
+					    			<div class="login-form" id="ifPT" style="display: none">
+
+						    			<label class="text-uppercase" for="type"> <b>Type de voiture</b></label>
+										<select class="form-control" name="type" id="type"><%
+		                    				for(var i=0; i<voitureRP.length ; i++){%>
+		                        				<option value="<%=voitureRP[i].VoitureID%>"> <%=voitureRP[i].marque%> <%=voitureRP[i].modele%> </option>
+		                   						 <%}%>
+										</select>
+					    			</div>
+
+					    			<input type="radio" name="res" value="immediate"  id="immediate" onchange="javascript:iPCheck();" required />  Résevation immédiate <br>
+								    <input type="radio" name="res" value="plustard" id="plustard" onchange="javascript:iPCheck();" required /> pré-réservation <br>
+								    <div class="login-form" id="ifPT2" style="display: none">
+								    	<label  class="text-uppercase" for="date"><b>Date et Heure pour la réservation</b></label>
+								    	<input class="form-control" type="datetime-local" name="date"  id="date" > <br>
+								    </div>
+					    			<button class="btn btn-login float-right" type="submit">Reserver</button>
+			  					</form>
+      					</div>
+      				</div>
+      			</div>
+			</div>
+		</main>
+
+		<footer>
+			<% include ../../partials/footer %>
+		</footer>
+
+	</body>
+</html>
